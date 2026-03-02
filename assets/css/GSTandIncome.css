@@ -1,0 +1,449 @@
+/* =========================
+   Global Styles
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+    overflow-x: hidden;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+body {
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    color: var(--text);
+    background: var(--bg);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+body::before{
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(37,99,235,0.08), transparent 40%),
+              radial-gradient(circle at 80% 70%, rgba(59,130,246,0.06), transparent 40%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+}
+/* ===============================
+   GST SERVICE PAGE - PREMIUM UI
+================================ */
+
+/* ---------- THEME VARIABLES ---------- */
+
+:root{
+  --primary: #2563eb;
+  --accent: #3b82f6;
+
+  --bg: #f5f7fb;
+  --section-bg: #ffffff;
+  --card-bg: #ffffff;
+
+  --text: #1e293b;
+  --text-light: #64748b;
+
+  --border: #e2e8f0;
+  --shadow: 0 10px 30px rgba(0,0,0,0.06);
+}
+
+/* DARK MODE */
+body.dark{
+    --primary:#D4AF37;
+  --bg: #0f172a;
+  --section-bg: #111827;
+  --card-bg: #1e293b;
+  --accent:#facc15;
+
+  --text: #f1f5f9;
+  --text-light: #94a3b8;
+
+  --border: #334155;
+  --shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* ---------- GLOBAL ---------- */
+
+.service-section{
+  padding: 90px 20px;
+  background: var(--bg);
+}
+
+.service-section h1{
+  text-align: center;
+  font-size: 38px;
+  letter-spacing: -0.5px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 25px;
+}
+
+.service-section h1 span{
+  color: var(--primary);
+}
+
+.sub-text{
+  max-width: 800px;
+  margin: 0 auto 18px auto;
+  text-align: center;
+  font-size: 17px;
+  color: var(--text-light);
+  line-height: 1.7;
+}
+
+/* ---------- CARDS GRID ---------- */
+
+.mission-wrapper{
+  padding: 60px 20px;
+  margin-top: 70px;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 35px;
+
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ---------- CARD DESIGN ---------- */
+
+.mission-card{
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 40px 32px;
+  box-shadow: var(--shadow);
+  transition: all 0.4s cubic-bezier(.4,0,.2,1);
+  position: relative;
+  overflow: hidden;
+}
+body.dark .mission-card{
+  background: rgba(30,41,59,0.85);
+}
+
+/* hover effect */
+.mission-card:hover{
+  transform: translateY(-10px);
+  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+}
+
+body.dark .mission-card:hover{
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+}
+
+/* animated top border */
+.mission-card::before{
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0%;
+  height: 4px;
+  background: linear-gradient(90deg,var(--primary),var(--accent));
+  transition: width 0.4s ease;
+}
+
+.mission-card h3{
+  font-size: 21px;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: var(--text);
+  position: relative;
+}
+
+.mission-card p{
+  font-size: 15px;
+  color: var(--text-light);
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.mission-card ul{
+  padding-left: 18px;
+}
+
+.mission-card ul li{
+  margin-bottom: 10px;
+  font-size: 14.5px;
+  color: var(--text-light);
+}
+
+.mission-card:hover::before{
+  width: 100%;
+}
+/* ---------- FAQ SECTION ---------- */
+
+.faq-section{
+  padding: 80px 20px;
+  background: var(--section-bg);
+}
+
+.faq-section h2{
+  text-align: center;
+  font-size: 30px;
+  margin-bottom: 50px;
+  color: var(--text);
+}
+
+.faq-item{
+  max-width: 850px;
+  margin: 0 auto 25px auto;
+  padding: 28px;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: var(--card-bg);
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.04);
+}
+
+.faq-item:hover{
+  border-color: var(--primary);
+  transform: translateY(-4px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+.faq-item h4{
+  font-size: 17px;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.faq-item p{
+  font-size: 14.5px;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* ---------- CTA SECTION ---------- */
+
+.service-cta{
+  padding: 100px 20px;
+  text-align: center;
+  background: linear-gradient(135deg, var(--primary), #1e40af);
+  color:var(--text);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-cta h2{
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.service-cta p{
+  font-size: 16px;
+  max-width: 650px;
+  margin: 0 auto 35px auto;
+  opacity: 0.95;
+  line-height: 1.6;
+}
+.service-cta::before{
+  content:"";
+  position:absolute;
+  width:300px;
+  height:300px;
+  background:rgba(255,255,255,0.08);
+  border-radius:50%;
+  top:-80px;
+  right:-80px;
+}
+
+/* CTA Button */
+.btn-ctaa{
+  display: inline-block;
+  padding: 15px 38px;
+  border-radius: 50px;
+  font-size: 15px;
+  font-weight: 600;
+  text-decoration: none;
+  background: #ffffff;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.btn-ctaa:hover{
+  background: #f1f5f9;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.large-btnn{
+  font-size: 16px;
+  padding: 16px 45px;
+}
+
+/* ===============================
+   SCROLL REVEAL ANIMATIONS
+================================ */
+
+/* Initial hidden state */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  will-change: opacity, transform;
+}
+
+/* Active visible state */
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Slight zoom variation */
+.reveal-zoom {
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-zoom.active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Stagger delay helpers */
+.delay-1 { transition-delay: 0.1s; }
+.delay-2 { transition-delay: 0.2s; }
+.delay-3 { transition-delay: 0.3s; }
+.delay-4 { transition-delay: 0.4s; }
+.delay-5 { transition-delay: 0.5s; }
+.delay-6 { transition-delay: 0.6s; }
+
+
+/* ===============================
+   TABLET OPTIMIZATION
+================================ */
+@media (min-width: 769px) and (max-width: 1024px){
+
+  .service-section{
+    padding: 70px 25px;
+  }
+
+  .service-section h1{
+    font-size: 32px;
+  }
+
+  .sub-text{
+    font-size: 16px;
+  }
+
+  /* Force 2 columns for better balance */
+  .mission-wrapper{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 50px 20px;
+  }
+
+  .mission-card{
+    padding: 30px;
+  }
+
+  .faq-section{
+    padding: 70px 25px;
+  }
+
+  .faq-item{
+    padding: 24px;
+  }
+
+  .service-cta{
+    padding: 80px 25px;
+  }
+
+  .service-cta h2{
+    font-size: 26px;
+  }
+  .reveal,
+  .reveal-zoom{
+    transition-duration: 0.6s;
+  }
+}
+
+/* ===============================
+   MOBILE OPTIMIZATION
+================================ */
+@media (max-width: 768px){
+
+  .service-section{
+    padding: 60px 15px;
+  }
+
+  .service-section h1{
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  .sub-text{
+    font-size: 15px;
+  }
+
+  /* Single column */
+  .mission-wrapper{
+    grid-template-columns: 1fr;
+    padding: 35px 15px;
+    gap: 20px;
+  }
+
+  .mission-card{
+    padding: 22px;
+    border-radius: 14px;
+  }
+
+  .mission-card h3{
+    font-size: 18px;
+  }
+
+  .mission-card p,
+  .mission-card ul li{
+    font-size: 14px;
+  }
+
+  .faq-section{
+    padding: 60px 15px;
+  }
+
+  .faq-section h2{
+    font-size: 22px;
+  }
+
+  .faq-item{
+    padding: 20px;
+  }
+
+  .service-cta{
+    padding: 70px 20px;
+  }
+
+  .service-cta h2{
+    font-size: 22px;
+  }
+
+  .service-cta p{
+    font-size: 14.5px;
+  }
+
+  .btn-ctaa{
+    width: 100%;
+    max-width: 280px;
+  }
+  .reveal,
+  .reveal-zoom{
+    transition-duration: 0.6s;
+  }
+}

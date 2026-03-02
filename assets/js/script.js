@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function revealOnScroll() {
 
-        const reveals = document.querySelectorAll(".reveal");
+        const reveals = document.querySelectorAll(".reveal, .reveal-zoom");
 
         reveals.forEach((element) => {
 
