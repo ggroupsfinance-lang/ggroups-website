@@ -119,6 +119,23 @@ body.dark {
 }
 
 /* =========================
+   Background Image Layer
+========================= */
+
+.services-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background: url('../../assets/images/services-hero.jpg')
+              center center / cover no-repeat;
+
+  animation: heroZoom 18s ease-in-out infinite alternate;
+  transform-origin: center;
+  z-index: 0;
+}
+
+/* =========================
    Services Hero
 ========================= */
 
@@ -135,22 +152,7 @@ body.dark {
   color: #fff;
 }
 
-/* =========================
-   Background Image Layer
-========================= */
 
-.services-hero::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-
-  background: url('/assets/images/services-hero.jpg')
-              center center / cover no-repeat;
-
-  animation: heroZoom 18s ease-in-out infinite alternate;
-  transform-origin: center;
-  z-index: 0;
-}
 
 /* =========================
    Dark Overlay
@@ -905,8 +907,12 @@ body.dark .why-card:hover {
     -webkit-mask:
         linear-gradient(#000 0 0) content-box,
         linear-gradient(#000 0 0);
-    -webkit-mask-composite:xor;
-            mask-composite:exclude;
+    mask:
+        linear-gradient(#000 0 0) content-box,
+        linear-gradient(#000 0 0);
+
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
     opacity:.6;
 }
 
