@@ -170,9 +170,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentPage = window.location.pathname.split("/").pop();
 
     // If URL ends with "/", treat it as index.html
-    if (currentPage === "") {
-        currentPage = "index.html";
-    }
+    if (currentPage === "") currentPage = "index.html";
 
     document.querySelectorAll(".nav-links a").forEach(link => {
         let linkPage = link.getAttribute("href").split("/").pop();
@@ -292,6 +290,47 @@ document.addEventListener("DOMContentLoaded", function () {
             });
         });
     }
+    /* =========================
+    6. Dynamic MCA & ROC Compliance Dates & Status
+    ========================= */
+
+    const today = new Date();
+    const currentYear = today.getFullYear();
+
+    document.querySelectorAll('.roc-compliance tbody tr').forEach(tr => {
+        const tdDate = tr.querySelector('.due-date');
+        const spanTag = tr.querySelector('.due-tag');
+
+        if (!tdDate || !spanTag) return;
+
+        const month = parseInt(tdDate.dataset.month);
+        const day = parseInt(tdDate.dataset.day);
+
+        // Base due date this year
+        let dueDate = new Date(currentYear, month - 1, day);
+
+        // Calculate diffDays for status
+        const diffDays = Math.ceil((dueDate - today) / (1000 * 60 * 60 * 24));
+
+        // Decide status & color
+        if (diffDays < 0) {
+            spanTag.textContent = "Overdue";
+            spanTag.className = "due-tag overdue";  // RED
+        } else if (diffDays <= 30) {
+            spanTag.textContent = "Due Soon";
+            spanTag.className = "due-tag due-soon"; // ORANGE
+        } else {
+            spanTag.textContent = "Upcoming";
+            spanTag.className = "due-tag upcoming"; // BLUE
+        }
+
+        // Always show formatted date
+        tdDate.textContent = dueDate.toLocaleDateString('en-IN', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric'
+        });
+    });
     window.addEventListener("scroll", revealOnScroll, {
         passive: true
     });

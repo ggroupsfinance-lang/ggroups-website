@@ -26,8 +26,9 @@ body::before{
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at 20% 30%, rgba(37,99,235,0.08), transparent 40%),
-              radial-gradient(circle at 80% 70%, rgba(59,130,246,0.06), transparent 40%);
+  background:
+    radial-gradient(circle at 20% 30%, rgba(37,99,235,0.06), transparent 45%),
+    radial-gradient(circle at 80% 70%, rgba(59,130,246,0.05), transparent 45%);
   pointer-events: none;
   z-index: -1;
 }
@@ -37,6 +38,7 @@ body::before{
     max-width: 1200px;
     margin: auto;
 }
+
 /* ===============================
    GST SERVICE PAGE - PREMIUM UI
 ================================ */
@@ -56,22 +58,36 @@ body::before{
 
   --border: #e2e8f0;
   --shadow: 0 10px 30px rgba(0,0,0,0.06);
+
+  /* Compliance Colors */
+  --due-color:#f59e0b;
+  --annual-color:#2563eb;
+  --audit-color:#6366f1;
+  --late-color:#ef4444;
 }
 
 /* DARK MODE */
 body.dark{
-    --primary:#D4AF37;
-  --bg: #0f172a;
-  --section-bg: #111827;
-  --card-bg: #1e293b;
+  --primary:#D4AF37;
   --accent:#facc15;
 
-  --text: #f1f5f9;
-  --text-light: #94a3b8;
+  --bg:#0f172a;
+  --section-bg:#111827;
+  --card-bg:#1e293b;
 
-  --border: #334155;
-  --shadow: 0 10px 30px rgba(0,0,0,0.4);
+  --text:#f1f5f9;
+  --text-light:#94a3b8;
+
+  --border:#334155;
+  --shadow:0 10px 30px rgba(0,0,0,0.4);
+
+  /* Compliance Colors Dark */
+  --due-color:#fbbf24;
+  --annual-color:#60a5fa;
+  --audit-color:#818cf8;
+  --late-color:#f87171;
 }
+
 
 /* ---------- GLOBAL ---------- */
 
@@ -122,7 +138,7 @@ body.dark{
     max-width: 850px;
     margin: 0 auto 50px auto;
     padding: 18px 25px;
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(--accent);
     background: var(--card-bg);
     border-radius: 8px;
     font-size: 15px;
@@ -156,6 +172,7 @@ body.dark{
   transition: all 0.4s cubic-bezier(.4,0,.2,1);
   position: relative;
   overflow: hidden;
+  isolation:isolate;
 }
 body.dark .mission-card{
   background: rgba(30,41,59,0.85);
@@ -164,11 +181,11 @@ body.dark .mission-card{
 /* hover effect */
 .mission-card:hover{
   transform: translateY(-10px);
-  box-shadow: 0 25px 60px rgba(0,0,0,0.12);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.10);
 }
 
 body.dark .mission-card:hover{
-  box-shadow: 0 25px 60px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.10);
 }
 
 /* animated top border */
@@ -181,7 +198,9 @@ body.dark .mission-card:hover{
   height: 4px;
   background: linear-gradient(90deg,var(--primary),var(--accent));
   transition: width 0.4s ease;
+  pointer-events: none;
 }
+
 
 .mission-card h3{
   font-size: 21px;
@@ -200,6 +219,7 @@ body.dark .mission-card:hover{
 
 .mission-card ul{
   padding-left: 18px;
+  margin-top:10px;
 }
 
 .mission-card ul li{
@@ -211,6 +231,529 @@ body.dark .mission-card:hover{
 .mission-card:hover::before{
   width: 100%;
 }
+.mission-card::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(
+      120deg,
+      transparent,
+      rgba(255,255,255,0.08),
+      transparent
+  );
+  opacity:0;
+  transition:opacity .4s ease;
+  pointer-events: none;
+}
+
+.mission-card:hover::after{
+  opacity:1;
+}
+
+/* ---------- GST TIMELINE SECTION ---------- */
+
+.gst-timeline-section{
+  padding:100px 0;
+  background:var(--section-bg);
+}
+
+/* Title */
+
+.timeline-title{
+  text-align:center;
+  font-size:36px;
+  font-weight:700;
+  margin-bottom:12px;
+  color:var(--text);
+}
+
+.timeline-subtext{
+  text-align:center;
+  max-width:650px;
+  margin:auto;
+  margin-bottom:70px;
+  color:var(--text-light);
+  font-size:16px;
+}
+
+/* Timeline container */
+
+.gst-timeline{
+  position:relative;
+  max-width:900px;
+  margin:auto;
+  padding-left:110px;
+}
+
+/* Vertical line */
+
+.gst-timeline::before{
+  content:"";
+  position:absolute;
+  left:40px;
+  top:0;
+  width:3px;
+  height:100%;
+  background:linear-gradient(
+    to bottom,
+    var(--border),
+    var(--border),
+    transparent
+  );
+}
+
+/* Timeline item */
+
+.timeline-item{
+  position:relative;
+  margin-bottom:55px;
+}
+
+/* Circle */
+
+.timeline-date{
+  position:absolute;
+  left:12px;
+  top:0;
+  width:52px;
+  height:52px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:700;
+  font-size:17px;
+  color:#fff;
+  box-shadow:0 6px 18px rgba(0,0,0,0.15);
+  border:4px solid var(--section-bg);
+  z-index:2;
+}
+
+/* Content Card */
+
+.timeline-content{
+  background:var(--card-bg);
+  padding:24px 28px;
+  border-radius:14px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition:all 0.35s ease;
+  position:relative;
+}
+
+/* Card hover */
+
+.timeline-content:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 40px rgba(0,0,0,0.08);
+  border-color:var(--primary);
+}
+
+/* Heading */
+
+.timeline-content h4{
+  margin-bottom:10px;
+  color:var(--text);
+  font-size:19px;
+  font-weight:600;
+}
+
+/* Paragraph */
+
+.timeline-content p{
+  color:var(--text-light);
+  margin-bottom:6px;
+  font-size:15px;
+}
+
+/* Status Colors */
+
+.timeline-date.due{
+  background:var(--due-color);
+}
+
+.timeline-date.annual{
+  background:var(--annual-color);
+}
+
+.timeline-date.audit{
+  background:var(--audit-color);
+}
+
+.timeline-date.late{
+  background:var(--late-color);
+}
+
+/* Text highlight */
+
+.due-text{
+  color:var(--due-color);
+  font-weight:600;
+}
+
+.late-text{
+  color:var(--late-color);
+  font-weight:600;
+}
+
+/* Service line */
+
+.service-line{
+  margin-top:10px;
+  font-size:14px;
+  font-weight:500;
+  color:var(--primary);
+  display:flex;
+  align-items:center;
+  gap:6px;
+}
+
+.service-line::before{
+  content:"✔";
+  color:#22c55e;
+  font-weight:700;
+  font-size:15px;
+}
+
+
+/* =========================
+   INCOME TAX DUE DATES
+========================= */
+
+.tax-dates-section{
+  padding:90px 0;
+  background:var(--section-bg);
+}
+
+.tax-dates-section h2{
+  text-align:center;
+  margin-bottom:50px;
+  font-size:32px;
+  color:var(--text);
+}
+/* Timeline container */
+
+.tax-timeline{
+  position:relative;
+  max-width:700px;
+  margin:auto;
+}
+
+/* vertical line */
+
+.tax-timeline::before{
+  content:"";
+  position:absolute;
+  left:17px;
+  top:0;
+  bottom:0;
+  width:3px;
+  height:100%;
+  background:var(--border);
+}
+
+/* timeline item */
+
+.timeline-item{
+  position:relative;
+  margin-bottom:40px;
+  padding-left:60px;
+}
+
+/* dot */
+
+.timeline-dot{
+  position:absolute;
+  left:7px;
+  top:10px;
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  background:var(--primary);
+  border:3px solid var(--card-bg);
+  box-shadow:0 0 0 4px rgba(37,99,235,0.15);
+}
+
+/* card */
+
+.timeline-content{
+  background:var(--card-bg);
+  padding:22px 26px;
+  border-radius:12px;
+  border:1px solid var(--border);
+  box-shadow:var(--shadow);
+  transition:all .3s ease;
+}
+
+/* hover */
+
+.timeline-content:hover{
+  transform:translateY(-4px);
+  box-shadow:0 20px 40px rgba(0,0,0,0.10);
+}
+
+/* heading */
+
+.timeline-content h3{
+  margin-bottom:8px;
+  font-size:18px;
+  color:var(--text);
+}
+.due-date,
+.timeline-content .late-date{
+  color: var(--due-color);
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  font-weight: bold;
+  padding: 2px 6px;
+  border-radius: 4px;
+  margin-right: 5px;
+  display: inline-block;
+}
+.due-date.on-time {
+  color: var(--due-color);       /* Greenish / before due date */
+  background-color: rgba(245, 158, 11, 0.1); /* Light background variant */
+}
+
+.due-date.due-soon {
+  color: var(--annual-color);    /* Orange/Blue for due date */
+  background-color: rgba(37, 99, 235, 0.1); /* Light background variant */
+}
+
+.due-date.late {
+  color: var(--late-color);      /* Red for late fee */
+  background-color: rgba(239, 68, 68, 0.1); /* Light background variant */
+}
+
+.late-date,
+.timeline-content .late-date {
+  color: var(--late-color);
+  font-weight: 600;
+  letter-spacing: 0.2px;
+}
+
+.due-note{
+  margin-top:20px;
+  padding:14px 18px;
+  border-left:4px solid var(--accent);
+  background:color-mix(in srgb, var(--accent) 12%, transparent);
+  font-size:15px;
+  line-height:1.6;
+  color:var(--text);
+  border-radius:6px;
+}
+
+/* =========================
+   MCA & ROC Compliance Section
+========================= */
+
+/* ---------- Card Container ---------- */
+.roc-compliance {
+  text-align: center; /* center headings and paragraphs */
+  margin: 60px auto;
+}
+
+.roc-compliance h2 {
+  font-size: 32px;
+  color: var(--text);
+  margin-bottom: 15px;
+}
+
+.roc-compliance p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-light);
+  margin-bottom: 30px;
+  text-align: center; /* center paragraph */
+}
+
+/* ---------- Compliance Card ---------- */
+.roc-compliance .compliance-card {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: var(--shadow);
+  margin: auto;
+  max-width: 1000px;
+  overflow-x: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.roc-compliance .compliance-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+}
+
+/* ---------- Compliance Table ---------- */
+.compliance-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 16px;
+  color: var(--text);
+  min-width: 600px;
+  margin-bottom: 20px;
+}
+
+.compliance-table th,
+.compliance-table td {
+  padding: 14px 18px;
+  text-align: center; /* center table content */
+  border-bottom: 1px solid var(--border);
+}
+
+.compliance-table th {
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+}
+
+.compliance-table tbody tr:nth-child(even) {
+  background: rgba(59,130,246,0.05);
+}
+
+.compliance-table tbody tr:hover {
+  background: rgba(59,130,246,0.12);
+}
+
+/* Rounded corners for table header */
+.compliance-table th:first-child {
+  border-top-left-radius: 12px;
+}
+
+.compliance-table th:last-child {
+  border-top-right-radius: 12px;
+}
+
+/* ---------- Due Tags ---------- */
+.due-tag {
+  display: inline-block;
+  padding: 5px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  min-width: 90px;
+}
+
+.due-tag.upcoming { background-color: var(--annual-color);font-weight: 600; }   /* Upcoming > 30 days */
+.due-tag.due-soon { background-color: var(--due-color);font-weight: 600; } /* Due < 30 days */
+.due-tag.overdue { background-color: var(--late-color);font-weight: 600; }    /* Overdue */
+
+/* ---------- Quick Tips Box ---------- */
+.quick-tips {
+  background: rgba(59,130,246,0.08);
+  border-left: 4px solid var(--primary);
+  border-radius: 16px;
+  padding: 20px;
+  margin-top: 25px;
+  text-align: left; /* left-align tips for readability */
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.quick-tips h4 {
+  margin-bottom: 12px;
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.quick-tips ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.quick-tips li {
+  margin-bottom: 8px;
+  color: var(--text-light);
+}
+/* -------------------- TDS Deadlines Section -------------------- */
+.tds-deadlines {
+  margin-top: 50px;
+  text-align: center;
+  padding: 0 15px;
+}
+
+.tds-deadlines h2 {
+  font-size: 30px;
+  color: var(--text);
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+/* Table Styling */
+.deadline-table {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  border-collapse: collapse;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.deadline-table th,
+.deadline-table td {
+  padding: 14px 20px;
+  text-align: center;
+  font-size: 16px;
+  border-bottom: 1px solid var(--border);
+}
+
+.deadline-table th {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+/* Gradient highlights per quarter (Light Mode) */
+.deadline-table tr:nth-child(1) td {
+  background: linear-gradient(90deg, #ffe8d6, #ffd2a6);
+}
+
+.deadline-table tr:nth-child(2) td {
+  background: linear-gradient(90deg, #d0ebff, #a5d8ff);
+}
+
+.deadline-table tr:nth-child(3) td {
+  background: linear-gradient(90deg, #e7f5ff, #a5d8ff);
+}
+
+.deadline-table tr:nth-child(4) td {
+  background: linear-gradient(90deg, #f0fdfa, #a5f5d0);
+}
+
+/* Hover effect */
+.deadline-table tr:hover td {
+  background-color: var(--accent);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+/* -------------------- Dark Mode Gradients -------------------- */
+body.dark .deadline-table th {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+body.dark .deadline-table tr:nth-child(1) td {
+  background: linear-gradient(90deg, #5c3d00, #8a5e1e);
+}
+
+body.dark .deadline-table tr:nth-child(2) td {
+  background: linear-gradient(90deg, #003f5c, #1a6f91);
+}
+
+body.dark .deadline-table tr:nth-child(3) td {
+  background: linear-gradient(90deg, #001f3f, #004080);
+}
+
+body.dark .deadline-table tr:nth-child(4) td {
+  background: linear-gradient(90deg, #00331a, #006633);
+}
+
+
 /* ---------- FAQ SECTION ---------- */
 
 .faq-section{
@@ -355,6 +898,7 @@ body.dark .mission-card:hover{
   padding: 18px 48px;
 }
 
+
 /* Dark Mode Adjustment */
 body.dark .btn-ctaa{
   box-shadow: 0 10px 30px rgba(59,130,246,0.4);
@@ -372,7 +916,7 @@ body.dark .btn-ctaa:hover{
     background: linear-gradient(
         to bottom,
         var(--section-bg),
-        var(--bg-color)
+        var(--bg)
     );
     position: relative;
 }
@@ -389,7 +933,7 @@ body.dark .btn-ctaa:hover{
     text-align: center;
     max-width: 750px;
     margin: 0 auto 60px;
-    color: var(--text-color);
+    color: var(--text);
     opacity: 0.75;
     font-size: 15px;
 }
@@ -408,7 +952,7 @@ body.dark .btn-ctaa:hover{
     border-radius: 20px;
     box-shadow: 0 10px 35px rgba(0, 0, 0, 0.05);
     transition: all 0.4s ease;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    border:1px solid var(--border);
     position: relative;
     overflow: hidden;
 }
@@ -469,7 +1013,7 @@ body.dark .btn-ctaa:hover{
 }
 
 .authority-card h3 a:hover {
-    color: var(--accent-color);
+    color: var(--accent);
 }
 
 /* Paragraph */
@@ -544,6 +1088,8 @@ body.dark .authority-section {
 .delay-4 { transition-delay: 0.4s; }
 .delay-5 { transition-delay: 0.5s; }
 .delay-6 { transition-delay: 0.6s; }
+.delay-7 { transition-delay: 0.7s; }
+.delay-8 { transition-delay: 0.8s; }
 
 
 /* ===============================
@@ -633,7 +1179,43 @@ body.dark .authority-section {
   .mission-card ul li{
     font-size: 14px;
   }
+  .gst-timeline{
+    padding-left:80px;
+  }
 
+  .gst-timeline::before{
+    left:32px;
+  }
+
+  .timeline-item{
+    margin-bottom:45px;
+  }
+
+  .timeline-date{
+    left:6px;
+    width:44px;
+    height:44px;
+    font-size:15px;
+  }
+
+  .timeline-content{
+    padding:18px 20px;
+  }
+
+  .timeline-title{
+    font-size:28px;
+  }
+  .tax-dates-section{
+    padding:70px 20px;
+  }
+
+  .tax-dates-section h2{
+    font-size:26px;
+  }
+
+  .due-dates li{
+    padding:18px 20px;
+  }
   .faq-section{
     padding: 60px 15px;
   }
@@ -665,5 +1247,53 @@ body.dark .authority-section {
   .reveal,
   .reveal-zoom{
     transition-duration: 0.6s;
+  }
+  .roc-compliance h2 {
+    font-size: 26px;
+  }
+  .roc-compliance p {
+    font-size: 15px;
+  }
+  .compliance-table th, .compliance-table td {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+  .quick-tips h4 {
+    font-size: 16px;
+  }
+  .deadline-table thead {
+    display: none;
+  }
+
+  .deadline-table, 
+  .deadline-table tbody, 
+  .deadline-table tr, 
+  .deadline-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .deadline-table tr {
+    margin-bottom: 15px;
+    background: var(--section-bg);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-radius: 10px;
+    padding: 15px;
+  }
+
+  .deadline-table td {
+    text-align: left;
+    padding: 10px 15px;
+    position: relative;
+    font-size: 15px;
+  }
+
+  .deadline-table td::before {
+    content: attr(data-label);
+    font-weight: 600;
+    text-transform: uppercase;
+    width: 120px;
+    display: inline-block;
+    color: var(--text-light);
   }
 }
