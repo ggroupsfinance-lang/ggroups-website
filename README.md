@@ -1,6 +1,4 @@
-Ok! Meeku **`README.md`** file ki sample ready cheyadam. Mee company “G Group’s” ki base cheskoni, GitHub repo ki use cheyadaniki complete ga clear description, services, setup instructions, and contact info include chesthanu.
 
-Here’s a professional draft:
 
 ````markdown
 # G Group's
