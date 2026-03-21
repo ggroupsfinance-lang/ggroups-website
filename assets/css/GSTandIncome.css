@@ -124,6 +124,7 @@ body.dark{
   color: var(--primary);
 }
 
+
 .sub-text{
   max-width: 800px;
   margin: 0 auto 18px auto;
@@ -144,7 +145,52 @@ body.dark{
     font-size: 15px;
     box-shadow: 0 5px 20px rgba(0,0,0,0.05);
 }
+.sub-text a,
+.mission-card a,
+.compliance-card a,
+.gst-timeline-content a,
+.tds-section a,
+.tax-timeline .timeline-content a,
+.service-line a,
+.faq-section a,
+.seo-support-text a {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+  position: relative;
+}
 
+.sub-text a::after,
+.mission-card a::after,
+.compliance-card a::after,
+.gst-timeline-content a::after,
+.tds-section a::after,
+.tax-timeline .timeline-content a::after,
+.service-line a::after,
+.faq-section a::after,
+.seo-support-text a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 100%;
+  height: 2px;
+  background: var(--accent);
+  transform: scaleX(0);
+  transition: 0.3s;
+}
+
+.sub-text a:hover::after,
+.mission-card a:hover::after,
+.compliance-card a:hover::after,
+.gst-timeline-content a:hover::after,
+.tds-section a:hover::after,
+.tax-timeline .timeline-content a:hover::after,
+.service-line a:hover::after,
+.faq-section a:hover::after,
+.seo-support-text a:hover::after {
+  transform: scaleX(1);
+}
 /* ---------- CARDS GRID ---------- */
 
 .mission-wrapper{
@@ -625,6 +671,52 @@ body.dark .mission-card:hover{
   border-top-right-radius: 12px;
 }
 
+/* DEADLINE NOTE FIXED */
+.deadline-note {
+  display: center;
+  align-items: center;
+  gap: 10px;
+
+  width: fit-content;              
+  max-width: 700px;          
+  margin: 15px auto;          
+
+  padding: 12px 14px;
+
+  border-left: 4px solid var(--accent);
+  background: rgba(37, 99, 235, 0.05);
+
+  border-radius: 8px;
+  font-size: 0.92rem;
+  color: var(--text-light);
+  line-height: 1.6;
+  
+}
+
+/* ICON */
+.deadline-note i {
+  color: var(--accent);
+  font-size: 1rem;
+  margin-top: 3px; /* ✅ aligns nicely with first text line */
+}
+
+/* HOVER */
+.deadline-note:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* LINK */
+.deadline-note a {
+  color: var(--primary);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+/* DARK MODE */
+body.dark .deadline-note {
+  background: rgba(255, 255, 255, 0.05);
+}
 /* ---------- Due Tags ---------- */
 .due-tag {
   display: inline-block;
@@ -753,6 +845,289 @@ body.dark .deadline-table tr:nth-child(4) td {
   background: linear-gradient(90deg, #00331a, #006633);
 }
 
+/* ===============================
+   COMPLIANCE SECTION (THEME BASED)
+================================ */
+
+.compliance-section {
+  padding: 80px 20px;
+  background: var(--bg);
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  color: var(--text);
+  margin-bottom: 40px;
+}
+
+/* GRID */
+.compliance-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.compliance-card {
+  background: var(--card-bg);
+  border-radius: 18px;
+  padding: 20px;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow);
+  transition: all 0.35s ease;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+/* GLOW EFFECT (THEME BASED) */
+.compliance-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, var(--accent), transparent 70%);
+  opacity: 0;
+  transition: 0.4s;
+}
+
+.compliance-card:hover::before {
+  opacity: 0.12;
+}
+
+.compliance-card:hover {
+  transform: translateY(-6px) scale(1.01);
+}
+
+/* HEADER */
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card-header h3 {
+  color: var(--text);
+  font-size: 1.1rem;
+}
+
+/* ICON */
+.toggle-icon {
+  font-size: 1.4rem;
+  color: var(--text-light);
+  transition: 0.3s;
+}
+
+/* CONTENT */
+.card-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+  color: var(--text-light);
+  font-size: 0.95rem;
+}
+
+/* ACTIVE STATE */
+.compliance-card.active .card-content {
+  max-height: 300px;
+  margin-top: 15px;
+}
+
+.compliance-card.active .toggle-icon {
+  transform: rotate(45deg);
+  color: var(--accent);
+}
+
+/* LIST */
+.compliance-card ul {
+  padding-left: 18px;
+}
+
+.compliance-card li {
+  margin-bottom: 8px;
+}
+
+/* ===============================
+   COLOR VARIANTS (KEY FEATURE 🔥)
+================================ */
+
+.compliance-card.due {
+  border-left: 4px solid var(--due-color);
+}
+
+.compliance-card.audit {
+  border-left: 4px solid var(--audit-color);
+}
+
+.compliance-card.late {
+  border-left: 4px solid var(--late-color);
+}
+
+.compliance-card.highlight {
+  border-left: 4px solid var(--accent);
+}
+
+/* ===============================
+   NOTE BOX
+================================ */
+
+.compliance-note {
+  margin-top: 30px;
+  padding: 15px;
+  border-left: 4px solid var(--accent);
+  background: rgba(0,0,0,0.03);
+  border-radius: 10px;
+  color: var(--text-light);
+}
+
+/* DARK MODE FIX */
+body.dark .compliance-note {
+  background: rgba(255,255,255,0.05);
+}
+
+/* ===============================
+   FINAL ULTRA TABLE (CLEAN)
+================================ */
+
+.ultra-wrap {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* SOFT GLOW BORDER */
+.ultra-wrap::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 16px;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    var(--accent),
+    transparent
+  );
+
+  opacity: 0;
+  transition: 0.4s ease;
+  z-index: 0;
+}
+
+.ultra-wrap:hover::before {
+  opacity: 0.6;
+  filter: blur(6px);
+}
+
+/* TABLE */
+.ultra-table {
+  position: relative;
+  z-index: 1;
+
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 14px;
+  overflow: hidden;
+
+  background: rgba(255,255,255,0.75);
+  backdrop-filter: blur(12px);
+
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+/* SUBTLE HOVER (NOT TOO MUCH) */
+.ultra-table:hover {
+  transform: translateY(-4px);
+}
+
+/* HEADER */
+.ultra-table th {
+  padding: 13px;
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: #fff;
+  font-size: 0.9rem;
+}
+
+/* CELLS */
+.ultra-table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+  transition: 0.2s ease;
+}
+
+/* ROW HOVER (CLEAN) */
+.ultra-table tbody tr:hover td {
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* IMPORTANT VALUES */
+.ultra-table .highlight {
+  color: var(--late-color);
+  font-weight: 600;
+}
+
+/* BADGE (LESS AGGRESSIVE) */
+.tds-col::after {
+  content: "Strict";
+  position: absolute;
+  top: 6px;
+  right: 8px;
+
+  font-size: 0.6rem;
+  padding: 2px 6px;
+  border-radius: 5px;
+
+  background: var(--late-color);
+  color: #fff;
+}
+
+/* ALERT BOX CLEAN */
+.tds-warning,
+.tds-example {
+  max-width: 650px;
+  margin: 20px auto;
+  padding: 12px 14px;
+
+  border-radius: 8px;
+  font-size: 0.9rem;
+
+  transition: 0.25s ease;
+}
+
+/* COLORS */
+.tds-warning {
+  border-left: 4px solid var(--late-color);
+  background: rgba(239, 68, 68, 0.06);
+}
+
+.tds-example {
+  border-left: 4px solid var(--accent);
+  background: rgba(37, 99, 235, 0.05);
+}
+
+/* SUBTLE HOVER */
+.tds-warning:hover,
+.tds-example:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow);
+}
+
+/* DARK MODE */
+body.dark .ultra-table {
+  background: rgba(30,41,59,0.7);
+}
+
+body.dark .ultra-table tbody tr:hover td {
+  background: rgba(255,255,255,0.05);
+}
+
+body.dark .tds-warning,
+body.dark .tds-example {
+  background: rgba(255,255,255,0.04);
+}
 
 /* ---------- FAQ SECTION ---------- */
 

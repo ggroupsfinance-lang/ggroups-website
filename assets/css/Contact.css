@@ -1094,7 +1094,56 @@ body.dark-mode .business-hours {
         #0dcaf0
     );
 }
+/* Custom checkbox */
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding-top: 10px;
+}
 
+.checkbox-group input[type="checkbox"] {
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border: 2px solid #0d6efd;
+    border-radius: 4px;
+    background: var(--bg-glass);
+    cursor: pointer;
+    position: relative;
+    flex-shrink: 0;
+}
+
+.checkbox-group input[type="checkbox"]:checked::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    width: 6px;
+    height: 12px;
+    border: solid #0d6efd;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Override floating label for checkbox */
+.form-group.checkbox-group label {
+    position: static;
+    transform: none;
+    top: auto;
+    background: transparent;
+    padding: 0;
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 1;
+    color: var(--text-color);
+}
+
+.checkbox-group label a {
+    color: #0d6efd;
+    text-decoration: underline;
+    pointer-events: auto;
+}
 /* ===============================
    MOBILE OPTIMIZATION
 ================================ */

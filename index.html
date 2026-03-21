@@ -4,17 +4,37 @@
     <meta charset="UTF-8">
     <title>G Group's | Building Trust & Excellence</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="G Group's - Delivering excellence in services with trust, quality, and innovation.">
+    <meta name="description" content="G Group's - Delivering excellence in GST, Income Tax, and financial compliance services.">
+    <meta name="theme-color" content="#0a74da">
 
-    <!-- Favicon -->
+    <!-- Favicon & Touch Icons -->
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="manifest" href="assets/site.webmanifest">
 
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/style.css">
 
     <!-- Google Fonts -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:title" content="G Group's | Building Trust & Excellence">
+    <meta property="og:description" content="Delivering excellence in GST, Income Tax, and financial compliance services.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ggroups.co.in">
+    <meta property="og:image" content="https://ggroups.co.in/assets/images/logo.png">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="G Group's | Building Trust & Excellence">
+    <meta name="twitter:description" content="Delivering excellence in GST, Income Tax, and financial compliance services.">
+    <meta name="twitter:image" content="https://ggroups.co.in/assets/images/logo.png">
+
 </head>
 
 <body>
@@ -30,7 +50,7 @@
             </a>
 
             <!-- Navigation -->
-            <nav id="navbar">
+            <nav id="navbar" aria-label="Main Navigation">
                 <ul class="nav-links">
                     <li><a href="index.html">Home</a></li>
                     <li><a href="./assets/pages/about.html">About</a></li>
@@ -38,9 +58,7 @@
                     <li><a href="./assets/pages/contact.html">Contact</a></li>
                 </ul>
                 <div class="mobile-cta reveal">
-                    <a href="./assets/pages/contact.html" class="btn-cta">
-                        Start Service
-                    </a>
+                    <a href="./assets/pages/contact.html" class="btn-cta"> Start Service</a>
                 </div>
             </nav>
 
@@ -61,7 +79,7 @@
 
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero" role="region" aria-labelledby="hero-heading">
         
         <!-- Background Video -->
         <video autoplay muted loop playsinline
@@ -149,16 +167,13 @@
     </section>
 
     <!-- About Preview -->
-    <section class="about-preview">
+    <section class="about-preview" role="region" aria-labelledby="about-title">
 
         <div class="container about-wrapper">
 
             <!-- Left Content -->
             <div class="about-content reveal">
-                <h2 class="section-title">
-                    About <span>G Group's</span>
-                </h2>
-
+                <h2 class="section-title">About <span>G Group's</span></h2>
                 <p class="section-description">
                     G Group's is committed to delivering reliable GST,
                     Income Tax, and financial compliance solutions with
@@ -183,9 +198,7 @@
                     </div>
                 </div>
 
-                <a href="./assets/pages/about.html" class="premium-btn">
-                    Learn More →
-                </a>
+                <a href="./assets/pages/about.html" class="premium-btn">Learn More →</a>
             </div>
 
             <!-- Right Visual -->
@@ -205,50 +218,48 @@
     </section>
 
     <!-- Services Preview -->
-    <section class="services">
+    <section class="services" role="region" aria-labelledby="services-title">
         <div class="container">
             <h2 class="services-title reveal">Our Services</h2>
             <p class="services-subtitle reveal">
-                Empowering your business with expert financial solutions,
-                comprehensive tax compliance, and seamless regulatory
-                management tailored to your growth.
+                We handle your tax filings, compliance, and financial processes —accurately, efficiently, and on time.
             </p>
             <div class="services-grid">
 
                 <a href="./assets/pages/Services/gst.html" class="service-card reveal delay-1">
                     <i class="fa-solid fa-file-invoice"></i>
                     <h3>GST Filing & Compliance</h3>
-                    <p>GST registration, return filing and compliance management</p>
+                    <p>GST registration, return filing, and complete compliance handling</p>
                 </a>
 
                 <a href="./assets/pages/Services/it.html" class="service-card reveal delay-2">
                     <i class="fa-solid fa-calculator"></i>
                     <h3>Income Tax </h3>
-                    <p>Income tax filing, planning and management</p>
+                    <p>Income tax return filing and end-to-end tax management</p>
                 </a>
 
                 <a href="./assets/pages/Services/pf.html" class="service-card reveal delay-3">
                     <i class="fa-solid fa-users"></i>
                     <h3>Payroll & PF Management</h3>
-                    <p>Payroll processing, PF, ESIC and Form 16</p>
+                    <p>Payroll processing, PF, ESIC compliance, and Form 16 preparation</p>
                 </a>
 
                 <a href="./assets/pages/Services/compliance.html" class="service-card reveal delay-4">
                     <i class="fa-solid fa-building"></i>
                     <h3>Complete Compliance Suite</h3>
-                    <p>Company registration and statutory compliance</p>
+                    <p>Company registration and complete statutory compliance execution</p>
                 </a>
 
                 <a href="./assets/pages/Services/tds.html" class="service-card reveal delay-5">
                     <i class="fa-solid fa-receipt"></i>
                     <h3>TDS & TCS Services</h3>
-                    <p>TDS/TCS filing, claiming and rectification</p>
+                    <p>TDS/TCS return filing, corrections, and compliance handling</p>
                 </a>
 
                 <a href="./assets/pages/Services/bank.html" class="service-card reveal delay-6">
                     <i class="fa-solid fa-landmark"></i>
                     <h3>Bank & Financial Support</h3>
-                    <p>Financial statements and loan documentation</p>
+                    <p>Preparation of financial statements and loan documentation support</p>
                 </a>
 
             </div>
@@ -265,21 +276,14 @@
                 you focus on growing your business.
             </p>
 
-            <a href="./assets/pages/contact.html" class="cta-btn">
-                Contact Now
-            </a>
+            <a href="./assets/pages/contact.html" class="cta-btn">Contact Now</a>
         </div>
     </section>
 
 
-    <!-- =========================
-            Footer
-    ========================= -->
-    <footer class="footer">
-
+    <!--Footer-->
+    <footer class="footer" role="contentinfo">
         <div class="container footer-grid">
-
-            <!-- Company -->
             <div class="footer-col">
                 <h3>G Group's</h3>
                 <p>
@@ -288,8 +292,6 @@
                     and measurable results.
                 </p>
             </div>
-
-            <!-- Services -->
             <div class="footer-col">
                 <h4>Services</h4>
                 <ul>
@@ -299,12 +301,10 @@
                     <li><a href="./assets/pages/Services/tds.html">TDS & TCS Compliance Services</a></li>
                 </ul>
             </div>
-
-            <!-- Quick Links -->
             <div class="footer-col">
                 <h4>Quick Links</h4>
                 <ul>
-                    <li><a href="../../index.html">Home</a></li>
+                    <li><a href="index.html">Home</a></li>
                     <li><a href="./assets/pages/Services/servicesMain.html">Services</a></li>
                     <li><a href="./assets/pages/about.html">About</a></li>
                     <li><a href="./assets/pages/contact.html">Contact</a></li>
@@ -314,30 +314,16 @@
             <!-- Contact -->
             <div class="footer-col">
                 <h4>Contact</h4>
-
-                <p>
-                    Email:
-                    <a href="mailto:ggroups.finance@gmail.com">
-                        ggroups.finance@gmail.com
-                    </a>
-                </p>
-
-                <p>
-                    Phone:
-                    <a href="tel:+917671942307">
-                        +91 7671942307
-                    </a>
-                </p>
-
-                <p>Andhra Pradesh, India</p>
+                <p>Email: <a href="mailto:info@ggroups.co.in">info@ggroups.co.in</a></p>
+                <p>Phone: <a href="tel:+919652907880">+91 96529 07880</a></p>
+                <p>India</p>
 
                 <!-- Social Media -->
-                <div class="footer-social" >
-                    <a href="#"><i class="fa-brands fa-linkedin"></i></a>
-                    <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                    <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/company/ggroups" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://www.instagram.com/ggroups" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.facebook.com/ggroups" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i></a>
                 </div>
-
             </div>
 
         </div>
@@ -348,23 +334,147 @@
             <p class="footer-note">
                 GST • Taxation • Business Compliance Services
             </p>
+            <p class="footer-legal">
+                <a href="./assets/pages/legal/disclaimer.html">Disclaimer</a> |
+                <a href="./assets/pages/legal/privacy.html">Privacy Policy</a> |
+                <a href="./assets/pages/legal/terms.html">Terms & Conditions</a>
+            </p>
         </div>
 
     </footer>
 
 
-    <!-- JS -->
-    <script src="assets/js/script.js"></script>
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/917671942307"
-        class="whatsapp-float"
-        target="_blank"
-        rel="noopener"
-        title="Chat with G Group's on WhatsApp">
-
-        <i class="fa-brands fa-whatsapp"></i>
-
-    </a>
-    <div class="cursor"></div>
+        <!-- JS -->
+        <script src="assets/js/script.js"></script>
+        <!-- WhatsApp Floating Button -->
+        <a href="https://wa.me/919652907880" class="whatsapp-float" target="_blank" rel="noopener" title="Chat with G Group's on WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+        </a>
+        <div class="cursor"></div>
+        <script type="application/ld+json">
+        {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+            "@type": "Organization",
+            "name": "G Group's",
+            "url": "https://ggroups.co.in",
+            "logo": "https://ggroups.co.in/assets/images/logo.png",
+            "sameAs": [
+                "https://www.linkedin.com/company/ggroups",
+                "https://www.instagram.com/ggroups",
+                "https://www.facebook.com/ggroups"
+            ],
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+91 96529 07880",
+                "contactType": "customer service",
+                "email": "info@ggroups.co.in",
+                "areaServed": "IN"
+            },
+            "description": "Delivering end-to-end financial, taxation, and business compliance services including GST, Income Tax, Payroll, and Company Registration."
+            },
+            {
+            "@type": "OfferCatalog",
+            "name": "Financial & Compliance Services",
+            "itemListElement": [
+                {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "GST Filing & Compliance",
+                    "description": "GST registration, return filing, and complete compliance handling",
+                    "url": "https://ggroups.co.in/assets/pages/Services/gst.html"
+                }
+                },
+                {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Income Tax Services",
+                    "description": "Income tax return filing and end-to-end tax management",
+                    "url": "https://ggroups.co.in/assets/pages/Services/it.html"
+                }
+                },
+                {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Payroll & PF Management",
+                    "description": "Payroll processing, PF, ESIC compliance, and Form 16 preparation",
+                    "url": "https://ggroups.co.in/assets/pages/Services/pf.html"
+                }
+                },
+                {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Complete Compliance Suite",
+                    "description": "Company registration and complete statutory compliance execution",
+                    "url": "https://ggroups.co.in/assets/pages/Services/compliance.html"
+                }
+                },
+                {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "TDS & TCS Services",
+                    "description": "TDS/TCS return filing, corrections, and compliance handling",
+                    "url": "https://ggroups.co.in/assets/pages/Services/tds.html"
+                }
+                },
+                {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Bank & Financial Support",
+                    "description": "Preparation of financial statements and loan documentation support",
+                    "url": "https://ggroups.co.in/assets/pages/Services/bank.html"
+                }
+                }
+            ]
+            },
+            {
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                "@type": "Question",
+                "name": "What services does G Group's provide?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "G Group's provides GST filing, Income Tax services, Payroll & PF management, complete compliance solutions, TDS & TCS services, and bank & financial support."
+                }
+                },
+                {
+                "@type": "Question",
+                "name": "How can I contact G Group's?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "You can contact us via email at info@ggroups.co.in or call +91 96529 07880. You can also use the WhatsApp chat link on our website."
+                }
+                },
+                {
+                "@type": "Question",
+                "name": "Does G Group's help with company registration?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes, we provide end-to-end company registration and statutory compliance services."
+                }
+                }
+            ]
+            },
+            {
+            "@type": "WebPage",
+            "name": "G Group's Homepage",
+            "url": "https://ggroups.co.in",
+            "potentialAction": {
+                "@type": "Action",
+                "name": "Start Service",
+                "target": "https://ggroups.co.in/assets/pages/contact.html"
+            }
+            }
+        ]
+        }
+        </script>
     </body>
 </html>

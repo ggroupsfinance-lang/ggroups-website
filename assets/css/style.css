@@ -1418,6 +1418,15 @@ h2 {
         #0dcaf0
     );
 }
+.footer-legal {
+    font-size: 0.85rem;
+    margin-top: 5px;
+}
+.footer-legal a {
+    color: var(--footer-text);
+    text-decoration: underline;
+    margin: 0 5px;
+}
 
 
 /* ======================
@@ -1480,11 +1489,15 @@ h2 {
     border-radius: 50%;
     background-color: var(--cursor-color);
     pointer-events: none;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%) scale(1);
     z-index: 9999;
     mix-blend-mode: difference;
-    box-shadow: 0 0 15px var(--cursor-color);
-    transition: transform 0.15s ease-out, background-color 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 12px var(--cursor-color), 0 0 25px rgba(255,255,255,0.1);
+    transition: 
+        transform 0.2s cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 0.2s,
+        box-shadow 0.2s;
+    will-change: transform;
 }
 
 .cursor-trail {
@@ -1493,23 +1506,24 @@ h2 {
     height: 8px;
     border-radius: 50%;
     background-color: var(--cursor-trail-color);
-    opacity: 0.5;
+    opacity: 0.3;
     transform: translate(-50%, -50%);
     pointer-events: none;
     z-index: 9998;
+    
 }
 
 
 .cursor.hover {
-    transform: scale(6);
+    transform: translate(-50%, -50%) scale(4);
     background-color: var(--cursor-accent);
-    box-shadow: 0 0 25px var(--cursor-accent);
-    opacity: 0.8;
+    box-shadow: 0 0 20px var(--cursor-accent), 0 0 40px rgba(255,255,255,0.15);
+    opacity: 0.6;
 }
 
-/* Optional: Click effect */
+
 .cursor:active {
-    transform: scale(8);
+    transform: translate(-50%, -50%) scale(6);
     box-shadow: 0 0 30px var(--cursor-accent);
 }
 
